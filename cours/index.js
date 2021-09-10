@@ -1,22 +1,93 @@
 const obj = {
   pseudo: "Satya",
   ville: "Figeac",
+  admin: false,
+
+  direBonjour: function () {
+    console.log("Boujour je suis " + this.pseudo);
+  },
 };
 
 // Ajouter
 
 obj.age = 24;
+obj["pseudo"] = "Saty";
 
 // Modifier
 
-obj.pseudo = "Sat";
+obj.age = 35;
 
 // Supprimer
-
-delete obj.ville;
-console.log(obj);
+// delete obj.ville;
 
 // Checker si une propriété existe
 
-console.log("pseudo" in obj);
-console.log("classe" in obj);
+// console.log("pseudo" in obj);
+// console.log("classe" in obj);
+
+// Parcourir un objet
+
+for (const key in obj) {
+  //   console.log(`${key} : ${obj[key]}`);
+}
+
+// console.log(obj.direBonjour());
+
+// Pour obtenir les clés d'un objet
+
+const keys = Object.keys(obj);
+
+// console.log(keys);
+
+const values = Object.values(obj);
+// console.log(values);
+
+// Mettre tous les éléments dans un tableau
+
+const nestedArray = Object.entries(obj);
+// console.log(nestedArray);
+
+const obj2 = {
+  taille: "1m75",
+  poids: "60kg",
+};
+
+// Fusionner objets
+
+const fusion = Object.assign({}, obj, obj2);
+// console.log(fusion);
+
+// Empecher les mofifications
+
+const newObj = Object.freeze(obj);
+newObj.pseudo = "yolo";
+// console.log(newObj);
+
+// Constructeur d'objet
+
+// Fonction Constructeur
+
+function User(pseudo, ville) {
+  this.pseudo = pseudo;
+  this.ville = ville;
+
+  this.getCity = function () {
+    console.log(this.pseudo + " habite à " + this.ville);
+  };
+}
+
+const user1 = new User(`Lise`, `La rochelle`);
+const user2 = new User(`Cathy`, `Paris`);
+// console.log(user1.getCity());
+
+//-----------------------------
+// Factory Functions
+function creaUser(pseudo, ville) {
+  return {
+    pseudo,
+    ville,
+  };
+}
+
+const user3 = new creaUser(`Jérome`, `Lalinde`);
+console.log(user3);
