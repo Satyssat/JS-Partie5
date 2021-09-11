@@ -90,4 +90,63 @@ function creaUser(pseudo, ville) {
 }
 
 const user3 = new creaUser(`Jérome`, `Lalinde`);
-console.log(user3);
+// console.log(user3);
+
+//------------------------
+// Creation de classe
+
+class Utilisateur {
+  constructor(pseudo, ville) {
+    this.pseudo = pseudo;
+    this.ville = ville;
+  }
+  sayMyName = function () {
+    console.log(`Bonjour je suis ${this.pseudo}`);
+  };
+}
+
+const user5 = new Utilisateur("kiwi", "Figeac");
+
+Utilisateur.prototype.sayCity = function () {
+  console.log(`${this.pseudo} habite à ${this.ville}`);
+};
+
+Object.assign(Utilisateur.prototype, {
+  method1() {
+    //
+  },
+  method2() {
+    //
+  },
+});
+
+// console.log(user5.sayCity());
+
+//-----------------
+// L'héritage
+//------------------
+
+class Animal {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  saySomething(text) {
+    console.log(`${this.name} dit : ${text}`);
+  }
+}
+
+class Dog extends Animal {
+  run() {
+    console.log(`le Chien court`);
+  }
+}
+
+class Cat extends Animal {
+  hunt() {
+    console.log("Je chasse un oiseau");
+  }
+}
+
+const Rintintin = new Dog("Rintintin", 9);
+console.log(Rintintin);
